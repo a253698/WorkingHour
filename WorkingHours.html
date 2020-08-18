@@ -38,13 +38,13 @@
 
     <p>
 
-        <b>工作時間：</b><input type="time" id="startTime" value="13:00"> ~ <input type="time" id="endTime" value="14:00">
+        <b>工作時間：</b><input type="time" id="startTime" value="8:00"> ~ <input type="time" id="endTime">
         <input type="text" id="difference"><br>
     </p>
 
     <p>
 
-        <button onclick="test()">計算</button>
+        <button onclick="diff()">計算</button>
         <button>清除</button>
     </p>
 
@@ -55,28 +55,64 @@
 <script>
     var start = document.getElementById("startTime").value;
     var end = document.getElementById("endTime").value;
-
+    
     document.getElementById("startTime").onchange = function () { diff(start, end) };
     document.getElementById("endTime").onchange = function () { diff(start, end) };
 
+    //F = five T=teen
+    // var eight = new Date(0, 0, 0, 8, 0, 0);
+    // var ten = new Date(0, 0, 0, 10, 0, 0);
+    // var tenF = new Date(0, 0, 0, 10, 15, 0);
+    // var tweF = new Date(0, 0, 0, 12, 15, 0);
+    // var thirdT = new Date(0, 0, 0, 13, 0, 0);
+    // var fifT = new Date(0, 0, 0, 15, 0, 0);
+    // var fifTF = new Date(0, 0, 0, 15, 15, 0);
+    // var selTF = new Date(0, 0, 0, 17, 15, 0);
+
+
+
     function diff(start, end) {
+        var start = document.getElementById("startTime").value;
+    var end = document.getElementById("endTime").value;
 
         start = start.split(":");
         end = end.split(":");
 
         var startDate = new Date(0, 0, 0, start[0], start[1], 0);
         var endDate = new Date(0, 0, 0, end[0], end[1], 0);
-        var diff = endDate.getTime() - startDate.getTime();
-        var minutes = Math.floor(diff / 1000 / 60);
 
-        return (minutes < 9 ? "0" : "") + minutes;
+        //直接計算
+        // var diff = endDate.getTime() - startDate.getTime();
+        // var minutes = Math.floor(diff / 1000 / 60);
+        // return (minutes < 9 ? "0" : "") + minutes;
+
+
+        //配合產線調整時間8:00開始
+        // if (startDate <= ten && (endDate > ten && endDate <= tenF)) {
+        //     return (minutes < 9 ? "0" : "") + minutes - Math.floor((endDate - ten) / 1000 / 60);
+        // }
+        // if (startDate <= ten && (endDate > tenF && endDate <= tweF)) {
+        //     return (minutes < 9 ? "0" : "") + minutes - 15;
+        // } 
+        // if (startDate <= ten && (endDate > tweF && endDate <= thirdT)) {
+        //     return (minutes < 9 ? "0" : "") + minutes - 15 - Math.floor((endDate - tweF) / 1000 / 60);
+        // } 
+        // if (startDate <= ten && (endDate > fifT && endDate <= fifTF)) {
+        //     return (minutes < 9 ? "0" : "") + minutes - 75;
+        // }
+        // if (startDate <= ten && (endDate > fifT && endDate <= fifTF)) {
+        //     return (minutes < 9 ? "0" : "") + minutes - 75 - Math.floor((endDate - tweF) / 1000 / 60);
+        // } 
+        // if (startDate <= ten && (endDate > fifTF)) {
+        //     return (minutes < 9 ? "0" : "") + minutes - 105;
+        // }
 
         //結果以小時：分鐘顯示
-        // var diff = endDate.getTime() - startDate.getTime();
-        // var hours = Math.floor(diff / 1000 / 60 / 60);
-        // diff -= hours * 1000 * 60 * 60;
-        // var minutes = Math.floor(diff / 1000 / 60);
-        // return (hours < 9 ? "0" : "") + hours + ":" + (minutes < 9 ? "0" : "") + minutes;
+        var diff = endDate.getTime() - startDate.getTime();
+        var hours = Math.floor(diff / 1000 / 60 / 60);
+        diff -= hours * 1000 * 60 * 60;
+        var minutes = Math.floor(diff / 1000 / 60);
+        return (hours < 9 ? "0" : "") + hours + ":" + (minutes < 9 ? "0" : "") + minutes;
     }
 
 
