@@ -38,26 +38,8 @@
 
     <p>
 
-        <b>工作時間：</b><input type="time" id="startTime"> ~ <input type="time" id="endTime">
-        <input type="text" id="difference"><br>
-        <b>工作時間：</b><input type="time" name="欄位名稱" id="startTime2"> ~ <input type="time" name="欄位名稱" id="endTime2">
-        <input type="text" id="wTime2"><br>
-        <b>工作時間：</b><input type="time" name="欄位名稱" id="startTime3"> ~ <input type="time" name="欄位名稱" id="endTime3">
-        <input type="text" id="wTime3"><br>
-        <b>工作時間：</b><input type="time" name="欄位名稱" id="startTime4"> ~ <input type="time" name="欄位名稱" id="endTime4">
-        <input type="text" id="wTime4"><br>
-        <b>工作時間：</b><input type="time" name="欄位名稱" id="startTime5"> ~ <input type="time" name="欄位名稱" id="endTime5">
-        <input type="text" id="wTime5"><br>
-        <b>工作時間：</b><input type="time" name="欄位名稱" id="startTime6"> ~ <input type="time" name="欄位名稱" id="endTime6">
-        <input type="text" id="wTime6"><br>
-        <b>工作時間：</b><input type="time" name="欄位名稱" id="startTime7"> ~ <input type="time" name="欄位名稱" id="endTime7">
-        <input type="text" id="wTime7"><br>
-        <b>工作時間：</b><input type="time" name="欄位名稱" id="startTime8"> ~ <input type="time" name="欄位名稱" id="endTime8">
-        <input type="text" id="wTime8"><br>
-        <b>工作時間：</b><input type="time" name="欄位名稱" id="startTime9"> ~ <input type="time" name="欄位名稱" id="endTime9">
-        <input type="text" id="wTime9"><br>
-        <b>工作時間：</b><input type="time" name="欄位名稱" id="startTime10"> ~ <input type="time" name="欄位名稱" id="endTime10">
-        <input type="text" id="wTime10"><br>
+        <b>工作時間：</b><input type="time" id="startTime" value="13:00"> ~ <input type="time" id="endTime" value="14:00"> 
+        <input type="text" id="difference"><br> 
     </p>
 
     <p>
@@ -97,36 +79,15 @@
         var diff = endDate.getTime() - startDate.getTime();
         var minutes = Math.floor(diff / 1000 / 60);
 
-        // return (minutes < 9 ? "0" : "") + minutes;
+        return (minutes < 9 ? "0" : "") + minutes;
 
-        // if ((startDate < ten) && (endDate >= tenF && endDate <= tweF)) {
-        //     return (minutes < 9 ? "0" : "") + minutes - 15;
-        // }
-        // if ((startDate > ten && startDate < tenF) && (endDate >= tenF && endDate <= tweF)) {
-        //     return (minutes < 9 ? "0" : "") + minutes - (Math.floor(tenF - startDate.getTime()) / 1000 / 60);
-        // }
-        // if ((startDate < ten) && (endDate >= thirdT && endDate <= fifT)) {
-        //     return (minutes < 9 ? "0" : "") + minutes - 60;
-        // }
-        // if ((startDate > ten && startDate < tenF) && (endDate >= thirdT && endDate <= fifT)) {
-        //     return (minutes < 9 ? "0" : "") + minutes - 60 - (Math.floor(tenF - startDate.getTime()) / 1000 / 60);
-        // if ((startDate >= eight && startDate <= ten) && (endDate >= fifTF)) {
-        //     return (minutes < 9 ? "0" : "") + minutes - 75;
-        // }
-        // else {
-        //     return (minutes < 9 ? "0" : "") + minutes;
-        // }
-
+     
         // var diff = endDate.getTime() - startDate.getTime();
-        var hours = Math.floor(diff / 1000 / 60 / 60);
-        diff -= hours * 1000 * 60 * 60;
-        var minutes = Math.floor(diff / 1000 / 60);
+        // var hours = Math.floor(diff / 1000 / 60 / 60);
+        // diff -= hours * 1000 * 60 * 60;
+        // var minutes = Math.floor(diff / 1000 / 60);
 
-        if ((startDate >= eight && startDate <= ten) && (endDate <= tenFif && endDate >= tweFif)) {
-
-        }
-
-        return (hours < 9 ? "0" : "") + hours + ":" + (minutes < 9 ? "0" : "") + minutes;
+        // return (hours < 9 ? "0" : "") + hours + ":" + (minutes < 9 ? "0" : "") + minutes;
     }
 
 
