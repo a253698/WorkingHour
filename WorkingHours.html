@@ -38,8 +38,8 @@
 
     <p>
 
-        <b>工作時間：</b><input type="time" id="startTime" value="13:00"> ~ <input type="time" id="endTime" value="14:00"> 
-        <input type="text" id="difference"><br> 
+        <b>工作時間：</b><input type="time" id="startTime" value="13:00"> ~ <input type="time" id="endTime" value="14:00">
+        <input type="text" id="difference"><br>
     </p>
 
     <p>
@@ -56,16 +56,6 @@
     var start = document.getElementById("startTime").value;
     var end = document.getElementById("endTime").value;
 
-    //F = five T=teen
-    var eight = new Date(0, 0, 0, 8, 0, 0);
-    var ten = new Date(0, 0, 0, 10, 0, 0);
-    var tenF = new Date(0, 0, 0, 10, 15, 0);
-    var tweF = new Date(0, 0, 0, 12, 15, 0);
-    var thirdT = new Date(0, 0, 0, 13, 0, 0);
-    var fifT = new Date(0, 0, 0, 15, 0, 0);
-    var fifTF = new Date(0, 0, 0, 15, 15, 0);
-    var selTF = new Date(0, 0, 0, 17, 15, 0);
-
     document.getElementById("startTime").onchange = function () { diff(start, end) };
     document.getElementById("endTime").onchange = function () { diff(start, end) };
 
@@ -81,12 +71,11 @@
 
         return (minutes < 9 ? "0" : "") + minutes;
 
-     
+        //結果以小時：分鐘顯示
         // var diff = endDate.getTime() - startDate.getTime();
         // var hours = Math.floor(diff / 1000 / 60 / 60);
         // diff -= hours * 1000 * 60 * 60;
         // var minutes = Math.floor(diff / 1000 / 60);
-
         // return (hours < 9 ? "0" : "") + hours + ":" + (minutes < 9 ? "0" : "") + minutes;
     }
 
