@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>產線工時計算器</title>
+    <link rel="stylesheet" type="text/css" href="style.css/" />
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <h1>產線工時計算器</h1>
+    <h5>工作時間：08:00~10:00 / 工作時間：10:15~12:15 / 工作時間：13:00~15:15 / 工作時間：15:15~17:15</h5>
+
+
+    <p>
+        <input type="radio" id="cut" name="workType">
+        <label for="male">裁切</label>
+        <input type="radio" id="print" name="workType">
+        <label for="female">噴印</label>
+        <input type="radio" id="buildup" name="workType">
+        <label for="other">組裝</label>
+        <input type="radio" id="bag" name="workType">
+        <label for="other">入袋</label>
+        <input type="radio" id="seal" name="workType">
+        <label for="other">封口</label>
+        <input type="radio" id="colorBox" name="workType">
+        <label for="other">入彩盒</label>
+        <input type="radio" id="sticker" name="workType">
+        <label for="other">貼貼紙</label>
+        <input type="radio" id="box" name="workType">
+        <label for="other">盒裝</label>
+        <input type="radio" id="qc" name="workType">
+        <label for="other">QC</label>
+        <input type="radio" id="bottle" name="workType">
+        <label for="other">裝採樣瓶</label>
+        <input type="radio" id="other" name="workType">
+        <label for="other">其他</label>
+    </p>
+
+    <p>
+
+        <b>工作時間：</b><input type="time" id="startTime"> ~ <input type="time" id="endTime">
+        <input type="text" id="difference"><br>
+        <b>工作時間：</b><input type="time" name="欄位名稱" id="startTime2"> ~ <input type="time" name="欄位名稱" id="endTime2">
+        <input type="text" id="wTime2"><br>
+        <b>工作時間：</b><input type="time" name="欄位名稱" id="startTime3"> ~ <input type="time" name="欄位名稱" id="endTime3">
+        <input type="text" id="wTime3"><br>
+        <b>工作時間：</b><input type="time" name="欄位名稱" id="startTime4"> ~ <input type="time" name="欄位名稱" id="endTime4">
+        <input type="text" id="wTime4"><br>
+        <b>工作時間：</b><input type="time" name="欄位名稱" id="startTime5"> ~ <input type="time" name="欄位名稱" id="endTime5">
+        <input type="text" id="wTime5"><br>
+        <b>工作時間：</b><input type="time" name="欄位名稱" id="startTime6"> ~ <input type="time" name="欄位名稱" id="endTime6">
+        <input type="text" id="wTime6"><br>
+        <b>工作時間：</b><input type="time" name="欄位名稱" id="startTime7"> ~ <input type="time" name="欄位名稱" id="endTime7">
+        <input type="text" id="wTime7"><br>
+        <b>工作時間：</b><input type="time" name="欄位名稱" id="startTime8"> ~ <input type="time" name="欄位名稱" id="endTime8">
+        <input type="text" id="wTime8"><br>
+        <b>工作時間：</b><input type="time" name="欄位名稱" id="startTime9"> ~ <input type="time" name="欄位名稱" id="endTime9">
+        <input type="text" id="wTime9"><br>
+        <b>工作時間：</b><input type="time" name="欄位名稱" id="startTime10"> ~ <input type="time" name="欄位名稱" id="endTime10">
+        <input type="text" id="wTime10"><br>
+    </p>
+
+    <p>
+
+        <button onclick="test()">計算</button>
+        <button>清除</button>
+    </p>
+
+</body>
+
+</html>
+
+<script>
+    var start = document.getElementById("startTime").value;
+    var end = document.getElementById("endTime").value;
+
+    //F = five T=teen
+    var eight = new Date(0, 0, 0, 8, 0, 0);
+    var ten = new Date(0, 0, 0, 10, 0, 0);
+    var tenF = new Date(0, 0, 0, 10, 15, 0);
+    var tweF = new Date(0, 0, 0, 12, 15, 0);
+    var thirdT = new Date(0, 0, 0, 13, 0, 0);
+    var fifT = new Date(0, 0, 0, 15, 0, 0);
+    var fifTF = new Date(0, 0, 0, 15, 15, 0);
+    var selTF = new Date(0, 0, 0, 17, 15, 0);
+
+    document.getElementById("startTime").onchange = function () { diff(start, end) };
+    document.getElementById("endTime").onchange = function () { diff(start, end) };
+
+    function diff(start, end) {
+
+        start = start.split(":");
+        end = end.split(":");
+
+        var startDate = new Date(0, 0, 0, start[0], start[1], 0);
+        var endDate = new Date(0, 0, 0, end[0], end[1], 0);
+        var diff = endDate.getTime() - startDate.getTime();
+        var minutes = Math.floor(diff / 1000 / 60);
+
+        // return (minutes < 9 ? "0" : "") + minutes;
+
+        // if ((startDate < ten) && (endDate >= tenF && endDate <= tweF)) {
+        //     return (minutes < 9 ? "0" : "") + minutes - 15;
+        // }
+        // if ((startDate > ten && startDate < tenF) && (endDate >= tenF && endDate <= tweF)) {
+        //     return (minutes < 9 ? "0" : "") + minutes - (Math.floor(tenF - startDate.getTime()) / 1000 / 60);
+        // }
+        // if ((startDate < ten) && (endDate >= thirdT && endDate <= fifT)) {
+        //     return (minutes < 9 ? "0" : "") + minutes - 60;
+        // }
+        // if ((startDate > ten && startDate < tenF) && (endDate >= thirdT && endDate <= fifT)) {
+        //     return (minutes < 9 ? "0" : "") + minutes - 60 - (Math.floor(tenF - startDate.getTime()) / 1000 / 60);
+        // if ((startDate >= eight && startDate <= ten) && (endDate >= fifTF)) {
+        //     return (minutes < 9 ? "0" : "") + minutes - 75;
+        // }
+        // else {
+        //     return (minutes < 9 ? "0" : "") + minutes;
+        // }
+
+        // var diff = endDate.getTime() - startDate.getTime();
+        var hours = Math.floor(diff / 1000 / 60 / 60);
+        diff -= hours * 1000 * 60 * 60;
+        var minutes = Math.floor(diff / 1000 / 60);
+
+        if ((startDate >= eight && startDate <= ten) && (endDate <= tenFif && endDate >= tweFif)) {
+
+        }
+
+        return (hours < 9 ? "0" : "") + hours + ":" + (minutes < 9 ? "0" : "") + minutes;
+    }
+
+
+
+    setInterval(function () { document.getElementById("difference").value = diff(start, end); }, 1000);
+//to update time every second (1000 is 1 sec interval and function encasing original code you had down here is because setInterval only reads functions) You can change how fast the time updates by lowering the time interval
+
+</script>
